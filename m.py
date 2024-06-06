@@ -226,8 +226,8 @@ def handle_bgmi(message):
         # Check if the user is in admin_id (admins have no cooldown)
         if user_id not in admin_id:
             # Check if the user has run the command before and is still within the cooldown period
-            if user_id in bgmi_cooldown and (datetime.datetime.now() - bgmi_cooldown[user_id]).seconds < 120:
-                response = "You Are On Cooldown ❌. Please Wait 2 min Before Running The /bgmi Command Again."
+            if user_id in bgmi_cooldown and (datetime.datetime.now() - bgmi_cooldown[user_id]).seconds < 1:
+                response = "You Are On Cooldown ❌. Please Wait 1 second Before Running The /bgmi Command Again."
                 bot.reply_to(message, response)
                 return
             # Update the last time the user ran the command
@@ -238,8 +238,8 @@ def handle_bgmi(message):
             target = command[1]
             port = int(command[2])  # Convert time to integer
             time = int(command[3])  # Convert port to integer
-            if time > 181:
-                response = "Error: Time interval must be less than 80."
+            if time > 301:
+                response = "Error: Time interval must be less than 300."
             else:
                 record_command_logs(user_id, '/bgmi', target, port, time)
                 log_command(user_id, target, port, time)
@@ -314,8 +314,8 @@ def welcome_rules(message):
     user_name = message.from_user.first_name
     response = f'''{user_name} Please Follow These Rules ⚠️:
 
-1. Dont Run Too Many Attacks !! Cause A Ban From Bot
-2. Dont Run 2 Attacks At Same Time Becz If U Then U Got Banned From Bot. 
+1. Don't Run Too Many Attacks !! Cause A Ban From Bot
+2. Don't Run 2 Attacks At Same Time Becz If U Then U Got Banned From Bot. 
 3. We Daily Checks The Logs So Follow these rules to avoid Ban!!'''
     bot.reply_to(message, response)
 
@@ -325,7 +325,7 @@ def welcome_plan(message):
     response = f'''{user_name}, Brother Only 1 Plan Is Powerfull Then Any Other Ddos !!:
 
 Vip 🌟 :
--> Attack Time : 180 (S)
+-> Attack Time : 300 (S)
 > After Attack Limit : 5 Min
 -> Concurrents Attack : 3
 
